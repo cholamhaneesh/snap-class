@@ -92,6 +92,14 @@ def style_base_layout():
                             text-align: center !important;
                             margin: 0 !important;
                         }
+
+                        .h2logo,
+                        .h2logo * {
+                            font-family: 'Climate Crisis', sans-serif !important;
+                            font-size: 2rem !important;
+                            line-height: 1.1 !important;
+                            margin-bottom:0rem !important;
+                        }
                         
                     </style>
                     
