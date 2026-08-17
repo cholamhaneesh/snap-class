@@ -23,18 +23,28 @@ def load_dlib_modules():
     return detector, sp, facerec
 
 def get_face_embeddings(image_np):
-    detector, sp, facerec=load_dlib_modules()
-    faces=detector(image_np, 1)
-    
-    encodings=[]
-    
+    detector, sp, facerec = load_dlib_modules()
+
+    # Remove alpha channel if present
+    if image_np.shape[-1] == 4:
+        image_np = image_np[:, :, :3]
+
+    # Detect faces
+    faces = detector(image_np, 2)
+
+    encodings = []
+
     for face in faces:
-        shape=sp(image_np, face)
-        
-        face_descriptor=facerec.compute_face_descriptor(image_np, shape, 1) #120 embeddings
-        
+        shape = sp(image_np, face)
+
+        face_descriptor = facerec.compute_face_descriptor(
+            image_np,
+            shape,
+            1
+        )
+
         encodings.append(np.array(face_descriptor))
-    
+
     return encodings
 
 @st.cache_resource
@@ -104,7 +114,55 @@ def predict_attendance(class_image_np):
         
     return detected_student, all_students, len(encodings)
 
+def identify_student(image_np, threshold=0.5, margin=0.08):
 
+    encodings = get_face_embeddings(image_np)
+
+    if len(encodings) == 0:
+        return None, None, 0
+
+    if len(encodings) > 1:
+        return None, None, len(encodings)
+
+    new_encoding = encodings[0]
+
+    students = get_all_students()
+
+    matches = []
+
+    for student in students:
+
+        stored_embedding = student.get("face_embedding")
+
+        if stored_embedding:
+            stored_embedding = np.array(stored_embedding)
+
+            distance = np.linalg.norm(
+                new_encoding - stored_embedding
+            )
+
+            matches.append((distance, student))
+
+    if not matches:
+        return None, None, 1
+
+    # Sort from smallest distance to largest
+    matches.sort(key=lambda x: x[0])
+
+    best_distance, best_student = matches[0]
+
+    # Check threshold
+    if best_distance > threshold:
+        return None, best_distance, 1
+
+    # Check ambiguity with second closest student
+    if len(matches) > 1:
+        second_distance, _ = matches[1]
+
+        if second_distance - best_distance < margin:
+            return None, best_distance, 1
+
+    return best_student, best_distance, 1
 
 
 
