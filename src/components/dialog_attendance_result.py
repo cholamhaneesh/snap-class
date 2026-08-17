@@ -2,9 +2,9 @@ import streamlit as st
 from src.database.db import create_attendance
 
 import time
-
-
-def show_attendance_results(df, logs):
+               
+@st.dialog("Attendance Reports")
+def attendance_result_dialog(df, logs):
     st.write("Please review attendance before confirming.")
     st.dataframe(df, hide_index=True, width='stretch')
     
@@ -19,13 +19,9 @@ def show_attendance_results(df, logs):
             try:
                 create_attendance(logs)
                 st.toast("Attendance taken")
-                st.session_state.attendance_inages=[]
+                st.session_state.attendance_images=[]
                 time.sleep(1)
                 st.rerun()
             except Exception as e:
                 st.error("Sync failed!")
-                
-@st.dialog("Attendance Reports")
-def attendance_result_dialog(df, logs):
-    show_attendance_results(df, logs)
     

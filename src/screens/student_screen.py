@@ -89,10 +89,10 @@ def student_dashboard():
                 name=sub['name'],
                 code=sub['subject_code'],
                 section=sub['section'],
-                stats={
+                stats=[
                     ('Total', stats['total']),
                     ('Attended', stats['attended'])
-                },
+                ],
                 footer_callback=unenroll_btn
             )
     

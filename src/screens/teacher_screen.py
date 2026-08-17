@@ -251,7 +251,7 @@ def teacher_tab_attendance_records():
         df.groupby(['ts_group', 'Time',  "Subject", "Subject Code"])
         .agg(
             Present_Count= ('is_present', 'sum'),
-            Total_Count= ("is_present", 'sum')
+            Total_Count= ("is_present", 'count')
         ).reset_index()
     )
     
@@ -277,7 +277,7 @@ def login_teacher(username, password):
     if teacher:
         st.session_state.user_role='teacher'
         st.session_state.teacher_data=teacher
-        st.session_state.is_loggeed_in=True
+        st.session_state.is_logged_in=True
         return True
 
     return False

@@ -1,9 +1,14 @@
 import streamlit as st
+import html
 
 
 def subject_card(name, code, section, stats=None, footer_callback=None):
 
-    html = f"""
+    name = html.escape(str(name))
+    code = html.escape(str(code))
+    section = html.escape(str(section))
+
+    html_content = f"""
 <div style="background: white;
             border-left: 8px solid #EB459E;
             padding: 25px;
@@ -29,13 +34,16 @@ Code:
 
     if stats:
 
-        html += """
+        html_content += """
 <div style="display: flex; gap: 8px; flex-wrap: wrap;">
 """
 
         for label, value in stats:
 
-            html += f"""
+            label = html.escape(str(label))
+            value = html.escape(str(value))
+
+            html_content += f"""
 <div style="background: #EB459E10;
             padding: 5px 12px;
             border-radius: 12px;
@@ -44,12 +52,12 @@ Code:
 </div>
 """
 
-        html += "</div>"
+        html_content += "</div>"
 
-    html += "</div>"
+    html_content += "</div>"
 
     st.markdown(
-        html,
+        html_content,
         unsafe_allow_html=True
     )
 
