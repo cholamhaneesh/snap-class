@@ -102,6 +102,12 @@ def style_base_layout():
                             margin-bottom:0rem !important;
                         }
                         
+                        /* Dataframe - white background to stand out from lavender page */
+                        [data-testid="stDataFrame"] {
+                            background-color: white !important;
+                            border-radius: 12px !important;
+                        }
+                        
                         /* Text input labels */
                         [data-testid="stTextInput"] label,
                         [data-testid="stTextInput"] label p {
