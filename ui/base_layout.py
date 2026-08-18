@@ -114,65 +114,6 @@ def style_base_layout():
                             opacity: 1 !important;
                         }
                         
-                        /* ===== FORCE LIGHT COMPONENTS ===== */
-
-                        /* Dialog */
-                        [data-testid="stDialog"] > div {
-                            background-color: #E0E3FF !important;
-                        }
-
-                        [data-testid="stDialog"] h1,
-                        [data-testid="stDialog"] h2,
-                        [data-testid="stDialog"] h3,
-                        [data-testid="stDialog"] p,
-                        [data-testid="stDialog"] label {
-                            color: #1E293B !important;
-                        }
-
-
-                        /* Selectbox label */
-                        [data-testid="stSelectbox"] label,
-                        [data-testid="stSelectbox"] label p {
-                            color: #1E293B !important;
-                        }
-
-                        /* Selectbox field */
-                        [data-testid="stSelectbox"] [data-baseweb="select"] > div {
-                            background-color: #E0E3FF !important;
-                            color: #1E293B !important;
-                            border: none !important;
-                        }
-
-                        /* Selected value */
-                        [data-testid="stSelectbox"] [data-baseweb="select"] span {
-                            color: #1E293B !important;
-                        }
-                        
-                        /* =========================
-                        DATAFRAME / TABLE - LIGHT THEME
-                        ========================= */
-
-                        /* Main dataframe container */
-                        [data-testid="stDataFrame"] {
-                            background-color: white !important;
-                            color: #1E293B !important;
-                            border-radius: 12px !important;
-                        }
-
-                        /* Dataframe inner area */
-                        [data-testid="stDataFrame"] > div {
-                            background-color: white !important;
-                        }
-
-                        /* Glide Data Grid */
-                        [data-testid="stDataFrame"] canvas {
-                            background-color: white !important;
-                        }
-
-                        /* Table container */
-                        [data-testid="stDataFrame"] [role="grid"] {
-                            background-color: white !important;
-                        }
                                                 
                     </style>
                     
