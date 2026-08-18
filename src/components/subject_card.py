@@ -44,10 +44,11 @@ Code:
             value = html.escape(str(value))
 
             html_content += f"""
-<div style="background: #EB459E10;
+<div style="background: #EB459E30;
             padding: 5px 12px;
             border-radius: 12px;
-            font-size: 0.9rem;">
+            font-size: 0.9rem;
+            color: #1E293B;">
 <b>{value}</b> {label}
 </div>
 """
