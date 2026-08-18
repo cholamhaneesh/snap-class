@@ -102,6 +102,33 @@ def style_base_layout():
                             margin-bottom:0rem !important;
                         }
                         
+                        /* Text input labels */
+                        [data-testid="stTextInput"] label,
+                        [data-testid="stTextInput"] label p {
+                            color: #1E293B !important;
+                        }
+
+                        /* Input container */
+                        [data-testid="stTextInput"] input {
+                            background-color: #E0E3FF !important;
+                            color: #1E293B !important;
+                            border: none !important;
+                            box-shadow: none !important;
+                        }
+
+                        /* Placeholder */
+                        [data-testid="stTextInput"] input::placeholder {
+                            color: #64748B !important;
+                            opacity: 1 !important;
+                        }
+
+                        /* Remove focus/error-looking border */
+                        [data-testid="stTextInput"] > div > div {
+                            background-color: #E0E3FF !important;
+                            border: none !important;
+                            box-shadow: none !important;
+                        }
+                                                
                     </style>
                     
                     
