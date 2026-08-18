@@ -102,10 +102,35 @@ def style_base_layout():
                             margin-bottom:0rem !important;
                         }
                         
-                        /* Dataframe - white background to stand out from lavender page */
-                        [data-testid="stDataFrame"] {
+                        /* Dataframe */
+                        [data-testid="stDataFrame"],
+                        [data-testid="stDataFrame"] > div,
+                        [data-testid="stDataFrame"] > div > div,
+                        [data-testid="stDataFrame"] [data-testid="stStyledDataFrameLite"] {
                             background-color: white !important;
                             border-radius: 12px !important;
+                            box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+                            padding: 8px !important;
+                        }
+
+                        [data-testid="stDataFrame"] canvas {
+                            background-color: white !important;
+                        }
+
+                        [data-testid="stDataFrame"] [role="grid"],
+                        [data-testid="stDataFrame"] [role="table"] {
+                            background-color: white !important;
+                        }
+
+                        [data-testid="stDataFrame"] [role="row"],
+                        [data-testid="stDataFrame"] [role="row"]:hover {
+                            background-color: white !important;
+                        }
+
+                        [data-testid="stDataFrame"] [role="columnheader"],
+                        [data-testid="stDataFrame"] [role="gridcell"] {
+                            background-color: white !important;
+                            color: #1E293B !important;
                         }
                         
                         /* Text input labels */
